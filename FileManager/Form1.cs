@@ -100,8 +100,9 @@ namespace FileManager
                                     if (Path.GetFileName(item.FullName) != "desktop.ini")
                                     {
                                         int indrev = Path.GetFileNameWithoutExtension(item.FullName).LastIndexOf(" Rev");
+                                        string extItem = Path.GetExtension(item.FullName).ToLower();
 
-                                        if (Path.GetFileNameWithoutExtension(item.FullName).Substring(0, indrev) == Path.GetFileNameWithoutExtension(arquivo.FullName).Substring(0, indRev))
+                                        if (Path.GetFileNameWithoutExtension(item.FullName).Substring(0, indrev)+$"{extItem}" == Path.GetFileNameWithoutExtension(arquivo.FullName).Substring(0, indRev) + $"{extensao}")
                                         {
                                             File.Move(item.FullName, $@"{Path.GetDirectoryName(item.FullName)}\Superado\{Path.GetFileName(item.FullName)}");
                                         }
